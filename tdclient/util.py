@@ -1,8 +1,8 @@
+from datetime import datetime
 import io
 import logging
 from urllib.parse import quote as urlquote
 
-import dateutil.parser
 import msgpack
 
 
@@ -130,7 +130,7 @@ def parse_date(s, fmt):
        datetime
     """
     try:
-        return dateutil.parser.parse(s)
+        return datetime.strptime(s, fmt)
     except ValueError:
         log.warning("Failed to parse date string: %s as %s" % (s, fmt))
         return None
